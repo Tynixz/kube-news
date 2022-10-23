@@ -46,6 +46,7 @@ kind: Deployment
 metadata: 
   name: web
 spec: 
+  replicas: 10
   selector: 
     matchLabels: 
       app: web
@@ -56,7 +57,7 @@ spec:
     spec: 
       containers: 
         - name: web
-          image: tynixz/kube-news:v2
+          image: tynixz/kube-news:v1
           ports: 
           - containerPort: 8080
           env: 
@@ -82,8 +83,5 @@ spec:
     app: web
   ports: 
     - port: 80
-    #como a porta do container acima é 8080, precisa fazer um direcionamento da porta 80 do service para a 8080 do pod.
-    #para isso adiciona o cara debaixo.
       targetPort: 8080
-      nodePort: 30000
-  type: NodePort
+  type: LoadBalancer

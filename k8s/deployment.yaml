@@ -57,7 +57,7 @@ spec:
     spec: 
       containers: 
         - name: web
-          image: tynixz/kube-news:v1
+          image: tynixz/kube-news:{{TAG}}
           ports: 
           - containerPort: 8080
           env: 
